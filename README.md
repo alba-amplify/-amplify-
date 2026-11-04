@@ -1,10 +1,11 @@
 # Amplify · Landings de venta
 
-Tres landings estáticas (HTML sin build), una por carpeta. Cada carpeta es un proyecto de Vercel distinto, con su carpeta como *Root Directory*.
+Cuatro landings estáticas (HTML sin build), una por carpeta. Cada carpeta es un proyecto de Vercel distinto, con su carpeta como *Root Directory*.
 
 | Carpeta | Producto | Precio |
 |---|---|---|
 | `starter/` | Amplify Starter | 49 € |
+| `masterclass/` | Masterclass en directo (30 nov – 3 dic) | 297 € |
 | `amplify/` | Amplify | 997 € |
 | `plus/` | Amplify Plus | 2.500 € |
 
