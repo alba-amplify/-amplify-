@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amplify Starter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Landing de venta del Starter de Amplify a 49 €: primer resultado de marca personal y acceso inmediato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: rejilla de bloques (bento) con tarjetas de radio grande sobre fondo arena; tarjetas de interfaz flotantes sobre "fotos" de degradado; una banda oscura por página; titulares en Inter Tight con la palabra clave en serif cursiva. */
+:root{
+  --bg:#F2EDE4; --card:#FFFDFA; --card-2:#E9E2D6; --fg:#2A1D14; --muted:#6E5E52; --line:rgba(42,29,20,.10);
+  --accent:#A8231D; --yellow:#F5E27A; --on-yellow:#2A1D14;
+  --ink:#1E1510; --ink-fg:#F9F6F0; --ink-muted:#BFAE9F; --ink-card:rgba(249,246,240,.06); --ink-line:rgba(249,246,240,.12);
+  --glass:rgba(255,253,250,.78); --glass-fg:#2A1D14; --glass-line:rgba(255,255,255,.6);
+  --btn:#2A1D14; --btn-fg:#F9F6F0; --ghost:rgba(42,29,20,.06);
+  --shadow:0 1px 2px rgba(42,29,20,.04),0 12px 32px -12px rgba(42,29,20,.16);
+  --display:"Inter Tight","Inter",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --logo:Georgia,"Times New Roman",serif;
+  --r:28px; --r-sm:18px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#130D09; --card:#1D1510; --card-2:#2A2019; --fg:#F9F6F0; --muted:#BFAE9F; --line:rgba(249,246,240,.10);
+  --accent:#F08A7E; --ink:#0B0705; --ink-card:rgba(249,246,240,.05);
+  --glass:rgba(29,21,16,.78); --glass-fg:#F9F6F0; --glass-line:rgba(249,246,240,.14);
+  --btn:#F5E27A; --btn-fg:#2A1D14; --ghost:rgba(249,246,240,.07);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#130D09; --card:#1D1510; --card-2:#2A2019; --fg:#F9F6F0; --muted:#BFAE9F; --line:rgba(249,246,240,.10);
+  --accent:#F08A7E; --ink:#0B0705; --ink-card:rgba(249,246,240,.05);
+  --glass:rgba(29,21,16,.78); --glass-fg:#F9F6F0; --glass-line:rgba(249,246,240,.14);
+  --btn:#F5E27A; --btn-fg:#2A1D14; --ghost:rgba(249,246,240,.07);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6); color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;font-weight:600;letter-spacing:-.03em}
+h2{font-size:clamp(32px,4.4vw,52px);line-height:1.04}
+h3{font-size:19px;line-height:1.3;letter-spacing:-.01em}
+p{margin:0}
+.hl{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.12em;line-height:.9;color:var(--accent)}
+.muted{color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.02em;padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--fg);white-space:nowrap}
+.pill .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.pill.y{background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.pill.y .d{background:var(--on-yellow)}
+.head{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;margin:0 auto clamp(32px,4vw,48px);max-width:760px}
+.head p.sub{color:var(--muted);font-size:17px;max-width:56ch}
+.head.left{align-items:flex-start;text-align:left;margin-left:0}
+section{padding-block:clamp(36px,5vw,56px)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* Cabecera flotante */
+.top{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:30;padding-top:12px}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 10px 0 18px;background:var(--glass);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow)}
+.logo{font-family:var(--logo);font-size:21px;line-height:1;background:var(--yellow);color:var(--on-yellow);padding:3px 11px 6px;border-radius:8px;text-decoration:none}
+.top nav{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500}
+.top nav a.lnk{text-decoration:none;color:var(--muted)}
+.top nav a.lnk:hover{color:var(--fg)}
+@media (max-width:820px){ .top nav .lnk{display:none} }
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:999px;padding:15px 22px;border:0;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-main{background:var(--btn);color:var(--btn-fg);box-shadow:0 8px 20px -8px rgba(42,29,20,.45)}
+.btn-ghost{background:var(--ghost);color:var(--fg)}
+.btn-sm{padding:11px 18px;font-size:14px}
+.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.16);font-size:12px;transition:transform .15s ease}
+.btn:hover .arr{transform:translateX(2px)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* "Fotos" de degradado */
+.ph{position:relative;overflow:hidden;border-radius:var(--r);isolation:isolate;
+  background:radial-gradient(70% 90% at 18% 12%,rgba(245,226,122,.95) 0,rgba(245,226,122,0) 55%),radial-gradient(60% 80% at 88% 92%,rgba(168,35,29,.9) 0,rgba(168,35,29,0) 60%),radial-gradient(50% 60% at 70% 30%,rgba(232,170,120,.7) 0,rgba(232,170,120,0) 70%),linear-gradient(160deg,#5A3A27 0%,#2A1D14 100%)}
+.ph::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.ph.b{background:radial-gradient(60% 70% at 85% 15%,rgba(245,226,122,.85) 0,rgba(245,226,122,0) 60%),radial-gradient(70% 80% at 10% 100%,rgba(168,35,29,.75) 0,rgba(168,35,29,0) 60%),linear-gradient(200deg,#6B4630 0%,#24170F 100%)}
+.ph.c{background:radial-gradient(80% 70% at 50% 0%,rgba(245,226,122,.8) 0,rgba(245,226,122,0) 60%),radial-gradient(60% 60% at 0% 80%,rgba(232,170,120,.6) 0,rgba(232,170,120,0) 70%),linear-gradient(180deg,#7A4A2E 0%,#2A1D14 100%)}
+.ph .lbl{position:absolute;left:16px;bottom:14px;font-size:11.5px;color:rgba(249,246,240,.75);letter-spacing:.02em}
+
+/* Tarjetas de interfaz flotantes */
+.glass{position:absolute;background:var(--glass);color:var(--glass-fg);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--glass-line);border-radius:18px;box-shadow:0 18px 40px -18px rgba(0,0,0,.5);padding:14px 16px;font-size:13.5px}
+.glass .t{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.live{display:flex;align-items:center;gap:10px;font-weight:600;border-radius:999px;padding:10px 16px}
+.live i{width:8px;height:8px;border-radius:50%;background:#E5483C;box-shadow:0 0 0 0 rgba(229,72,60,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(229,72,60,0)}100%{box-shadow:0 0 0 0 rgba(229,72,60,0)}}
+.todo{display:flex;flex-direction:column;gap:8px;min-width:230px}
+.todo div{display:flex;align-items:center;gap:10px}
+.todo .ck{width:18px;height:18px;border-radius:6px;border:1.5px solid currentColor;opacity:.5;display:grid;place-items:center;flex:none}
+.todo .ck.on{background:var(--yellow);border-color:var(--yellow);opacity:1;color:var(--on-yellow)}
+.todo .ck svg{width:12px;height:12px}
+.chat{max-width:300px}
+.chat .who{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;margin-bottom:6px}
+.chat .who b{width:22px;height:22px;border-radius:50%;background:var(--yellow);color:var(--on-yellow);display:grid;place-items:center;font-size:10px}
+.chat p{background:rgba(127,127,127,.12);border-radius:4px 14px 14px 14px;padding:9px 12px;line-height:1.45}
+
+/* Hero */
+.hero{padding-top:clamp(40px,7vw,88px)}
+.hero .intro{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;max-width:880px;margin:0 auto}
+.hero h1{font-size:clamp(42px,7vw,88px);line-height:1;letter-spacing:-.045em}
+.hero .sub{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:58ch}
+.hero .mini{font-size:13px;color:var(--muted);display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center}
+.hero .mini span{display:inline-flex;align-items:center;gap:6px}
+.hero .mini svg{width:15px;height:15px;color:var(--accent)}
+.stage{margin-top:clamp(36px,5vw,56px);height:clamp(380px,46vw,540px)}
+.stage .g1{left:4%;top:7%}
+.stage .g2{right:4%;top:12%}
+.stage .g3{left:6%;bottom:9%}
+.stage .g4{right:5%;bottom:9%;max-width:340px}
+.stage .g4 p.big{font:600 15px/1.35 var(--display)}
+@media (max-width:760px){ .stage{height:auto;display:flex;flex-direction:column;gap:10px;padding:16px;padding-bottom:40px} .stage .glass{position:static;max-width:none} .stage .g2,.stage .g4{display:none} }
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.fact{padding:22px 24px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fact b{font:600 clamp(22px,2.4vw,28px)/1.1 var(--display);letter-spacing:-.02em}
+.fact span{font-size:14px;color:var(--muted)}
+.fact.y{background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.fact.y span{color:var(--on-yellow);opacity:.75}
+@media (max-width:760px){ .facts{grid-template-columns:1fr} }
+
+/* Banda oscura (vídeo) */
+.dark{background:var(--ink);color:var(--ink-fg);border-radius:clamp(24px,3vw,40px);padding:clamp(36px,6vw,72px) clamp(16px,4vw,56px)}
+.dark .head p.sub{color:var(--ink-muted)}
+.dark .pill{background:var(--ink-card);color:var(--ink-fg);border-color:var(--ink-line)}
+.vid{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:var(--r)}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:rgba(255,253,250,.9);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(255,253,250,.18);transition:transform .2s ease}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.play svg{width:26px;height:26px;margin-left:4px;fill:#2A1D14}
+.vid .gv{left:20px;top:20px}
+.vrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.vrow div{background:var(--ink-card);border:1px solid var(--ink-line);border-radius:var(--r-sm);padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.vrow b{font:600 17px/1.25 var(--display)}
+.vrow span{font-size:14px;color:var(--ink-muted)}
+.dark .ctas{margin-top:28px}
+.dark .btn-main{background:var(--yellow);color:var(--on-yellow)}
+@media (max-width:760px){ .vrow{grid-template-columns:1fr} }
+
+/* Bento de propuesta */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.bento > *{min-width:0}
+.b-lead{grid-column:span 5;grid-row:span 3;padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.b-lead h2{font-size:clamp(30px,3.4vw,44px)}
+.b-lead .hl{color:var(--on-yellow)}
+.b-lead p{opacity:.8}
+.b-item{grid-column:span 7;padding:24px 26px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:start}
+.b-item .ic{width:52px;height:52px;border-radius:16px;background:var(--card-2);display:grid;place-items:center}
+.b-item .ico{width:24px;height:24px;color:var(--accent)}
+.b-item p{color:var(--muted);margin-top:6px;font-size:15.5px}
+.b-wide{grid-column:span 12}
+@media (max-width:860px){ .b-lead,.b-item{grid-column:span 12} .b-lead{grid-row:auto} }
+
+/* Para ti si */
+.fit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px}
+.fit .ph{min-height:420px;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:10px;padding:40px 28px}
+.fit .ph .pill{font-size:clamp(14px,1.4vw,17px);padding:11px 18px;background:var(--glass);color:var(--glass-fg);border-color:var(--glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.fit .ph .pill:nth-child(3n+1){transform:rotate(-6deg)}
+.fit .ph .pill:nth-child(3n+2){transform:rotate(4deg)}
+.fit .ph .pill:nth-child(4){background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.fit .list{padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:22px}
+.fit ol{list-style:none;margin:0;padding:0;counter-reset:f}
+.fit li{counter-increment:f;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:15px 0;border-top:1px solid var(--line);font-size:16.5px;align-items:baseline}
+.fit li::before{content:counter(f,decimal-leading-zero);font:500 13px/1 var(--display);color:var(--muted)}
+.fit .not{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border-radius:var(--r-sm);padding:14px 16px;font-size:14.5px;color:var(--muted)}
+.fit .not b{color:var(--fg)}
+.fit .list .ctas{justify-content:flex-start}
+@media (max-width:860px){ .fit{grid-template-columns:1fr} .fit .ph{min-height:260px} }
+
+/* Equipo */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.person{padding:10px 10px 20px;display:flex;flex-direction:column;gap:14px}
+.person .ph{aspect-ratio:4/4.2;max-width:100%;border-radius:20px;display:flex;align-items:flex-end;justify-content:space-between;padding:14px}
+.person .ini{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font:italic 400 64px/1 var(--serif);color:rgba(249,246,240,.9)}
+.person .pill{background:var(--glass);color:var(--glass-fg);border-color:var(--glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.person .txt{padding:0 10px;display:flex;flex-direction:column;gap:6px}
+.person .txt p{font-size:14.5px;color:var(--muted)}
+
+/* Comunidad (oscura) */
+.comm{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px}
+.comm .ph{min-height:420px}
+.comm .ph .glass{position:absolute}
+.comm .ph .c1{left:20px;top:20px;right:20px;max-width:330px}
+.comm .ph .c2{right:20px;bottom:20px;left:auto;max-width:300px}
+.comm .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.comm .grid div{background:var(--ink-card);border:1px solid var(--ink-line);border-radius:var(--r-sm);padding:22px;display:flex;flex-direction:column;gap:8px}
+.comm .grid p{color:var(--ink-muted);font-size:14.5px}
+.comm .grid div:first-child{background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.comm .grid div:first-child p{color:var(--on-yellow);opacity:.75}
+@media (max-width:860px){ .comm{grid-template-columns:1fr} .comm .ph{min-height:320px} }
+@media (max-width:520px){ .comm .grid{grid-template-columns:1fr} }
+
+/* Logos */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;align-items:center;padding:28px 24px}
+.logos span{font:600 18px/1 var(--display);letter-spacing:-.02em;color:var(--muted);opacity:.55;display:inline-flex;align-items:center;gap:8px}
+.logos span::before{content:"";width:18px;height:18px;border-radius:6px;background:currentColor;opacity:.7}
+.logos-h{text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}
+
+/* Sobre */
+.about{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.about > *{min-width:0}
+.a-num{grid-column:span 4;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;background:var(--yellow);color:var(--on-yellow);border-color:transparent}
+.a-num b{font:400 clamp(72px,9vw,120px)/.9 var(--serif);font-style:italic;letter-spacing:-.02em}
+.a-txt{grid-column:span 8;padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;gap:16px}
+.a-txt p{color:var(--muted);font-size:16.5px;max-width:62ch}
+.a-txt strong{color:var(--fg);font-weight:600}
+.a-txt .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+@media (max-width:860px){ .a-num,.a-txt{grid-column:span 12} }
+
+/* Pasos */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;padding:26px;display:flex;flex-direction:column;gap:12px;position:relative;min-width:0}
+.steps li::before{content:counter(s,decimal-leading-zero);font:italic 400 56px/1 var(--serif);color:var(--accent);margin-bottom:18px}
+.steps li p{color:var(--muted);font-size:15px}
+.steps li:last-child{background:var(--ink);color:var(--ink-fg);border-color:transparent}
+.steps li:last-child p{color:var(--ink-muted)}
+.steps li:last-child::before{color:var(--yellow)}
+.close-note{margin-top:14px;padding:18px 22px;display:flex;gap:14px;align-items:center;font-size:15.5px}
+.close-note .pill{flex:none}
+@media (max-width:860px){ .steps{grid-template-columns:1fr} .close-note{flex-direction:column;align-items:flex-start} }
+
+/* Programa */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.stat{padding:24px 26px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.stat b{font:600 clamp(36px,4.6vw,60px)/1 var(--display);letter-spacing:-.045em}
+.stat span{color:var(--muted);font-size:14.5px}
+.stat:nth-child(2){background:var(--ink);color:var(--ink-fg);border-color:transparent}
+.stat:nth-child(2) span{color:var(--ink-muted)}
+@media (max-width:760px){ .stats{grid-template-columns:1fr} }
+.mods{display:flex;flex-direction:column;gap:10px}
+details.mod{background:var(--card);border:1px solid var(--line);border-radius:22px;transition:background .2s ease}
+details.mod summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto 36px;gap:16px;align-items:center;padding:18px 20px}
+details.mod summary::-webkit-details-marker{display:none}
+.mod .n{font:600 12px/1 var(--body);letter-spacing:.06em;padding:8px 11px;border-radius:999px;background:var(--card-2);color:var(--muted)}
+details[open].mod .n{background:var(--yellow);color:var(--on-yellow)}
+.mod h3{font-size:clamp(17px,1.8vw,20px)}
+.mod .meta{font-size:13px;color:var(--muted);white-space:nowrap}
+.mod .pm{width:36px;height:36px;border-radius:50%;background:var(--card-2);display:grid;place-items:center;transition:transform .2s ease}
+.mod .pm::before{content:"+";font-size:18px;line-height:1}
+details[open].mod .pm{transform:rotate(45deg);background:var(--btn);color:var(--btn-fg)}
+.mod .body{padding:0 20px 22px;display:flex;flex-direction:column;gap:14px}
+.mod .body p{color:var(--muted)}
+.mod .body ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.mod .body li{font-size:14px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+@media (max-width:640px){ details.mod summary{grid-template-columns:minmax(0,1fr) 36px} .mod .n,.mod .meta{display:none} }
+
+/* Precio */
+.price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:stretch}
+.p-inc{padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px}
+.p-inc ul{list-style:none;margin:0;padding:0}
+.p-inc li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid var(--line);font-size:15.5px}
+.p-inc li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--yellow);color:var(--on-yellow);margin-top:1px}
+.extra{margin-top:auto;background:var(--card-2);border-radius:var(--r-sm);padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.extra p{color:var(--muted);font-size:14.5px}
+.p-card{background:var(--yellow);color:var(--on-yellow);border-radius:var(--r);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(168,35,29,.45)}
+.p-card::before{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.55),rgba(255,255,255,0) 70%)}
+.p-card .top-r{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:relative}
+.p-card .nm{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.amount{font:600 clamp(60px,8vw,96px)/1 var(--display);letter-spacing:-.05em;position:relative}
+.was{display:block;font:500 clamp(22px,2.6vw,30px)/1 var(--display);letter-spacing:-.02em;opacity:.5;margin-bottom:8px;text-decoration-thickness:2px}
+.fact s{opacity:.7}
+.amount small{display:block;font:500 15px/1.4 var(--body);letter-spacing:0;margin-top:10px;opacity:.75}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:rgba(42,29,20,.08);padding:4px;border-radius:999px;position:relative;width:max-content;max-width:100%}
+.seg button{font:600 13px/1 var(--body);padding:9px 13px;border-radius:999px;border:0;background:transparent;color:var(--on-yellow);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#2A1D14;color:#F9F6F0}
+.p-card .btn-main{background:#2A1D14;color:#F9F6F0;width:100%;padding:18px 22px;font-size:16px}
+.p-card .btn-ghost{background:rgba(42,29,20,.08);color:var(--on-yellow);width:100%}
+.p-card .ctas{flex-direction:column;margin-top:auto}
+.p-card .note{font-size:13px;opacity:.7;position:relative}
+@media (max-width:860px){ .price{grid-template-columns:1fr} .p-card{order:-1} }
+
+/* FAQ */
+.faqg{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:14px;align-items:start}
+.faqg .side{padding:28px;display:flex;flex-direction:column;gap:16px;position:sticky;top:110px}
+.faqg .side .ctas{justify-content:flex-start}
+.faq{display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:20px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 22px;font:600 16.5px/1.35 var(--display);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--card-2);display:grid;place-items:center;font-weight:400;font-size:18px;transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 20px;color:var(--muted);max-width:68ch}
+@media (max-width:860px){ .faqg{grid-template-columns:1fr} .faqg .side{position:static} }
+
+/* Cierre */
+.final{position:relative;overflow:hidden;text-align:center;padding:clamp(56px,8vw,104px) 20px;display:flex;flex-direction:column;align-items:center;gap:22px;background:radial-gradient(60% 90% at 50% 100%,rgba(245,226,122,.75),rgba(245,226,122,0) 70%),var(--card)}
+.final h2{font-size:clamp(36px,5.5vw,68px);max-width:16ch}
+.final p{color:var(--muted);max-width:52ch}
+footer{padding-block:28px 40px;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* Barra fija en móvil */
+.mbar{display:none}
+@media (max-width:720px){
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:30;gap:12px;align-items:center;justify-content:space-between;
+    padding:10px 10px 10px 18px;border-radius:999px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .mbar b{font:600 17px/1.1 var(--display)}
+  .mbar span{font-size:12px;color:var(--muted);display:block}
+  body{padding-bottom:96px}
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><div class="bar">
+<a class="logo" href="#inicio" aria-label="amplify, inicio">amplify</a>
+<nav aria-label="Secciones"><a class="lnk" href="#programa">Programa</a><a class="lnk" href="#equipo">Equipo</a><a class="lnk" href="#precio">Precio</a><a class="lnk" href="#faq">Preguntas</a><a class="btn btn-main btn-sm" href="#precio">Empezar por 49 €</a></nav>
+</div></div></header>
+<main id="inicio">
+<section class="hero"><div class="wrap">
+<div class="intro">
+<span class="pill"><span class="d" aria-hidden="true"></span>Acceso inmediato</span>
+<h1>Tu primer resultado en redes, <span class="hl">esta semana.</span></h1>
+<p class="sub">El punto de partida de Amplify para empezar tu marca personal con un sistema, no a ciegas. El Starter es la forma más sencilla de conocer el método de Alessio.</p>
+<div class="ctas"><a class="btn btn-main" href="#precio">Empezar por 49 € <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#programa">Ver qué incluye</a></div>
+<p class="mini"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5L19.5 7"/></svg>Starter de marca personal</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5L19.5 7"/></svg>100% online</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5L19.5 7"/></svg>Acceso al momento</span></p>
+</div>
+<div class="ph stage" role="img" aria-label="[Foto o vídeo de Alessio]">
+<div class="glass live g1"><i aria-hidden="true"></i>Acceso inmediato</div>
+<div class="glass todo g2"><p class="t">Tu Starter</p><div><span class="ck on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Tu tema y tu público</div><div><span class="ck"></span>Tu perfil</div><div><span class="ck"></span>Tu primer contenido</div></div>
+<div class="glass chat g3"><p class="who"><b>AL</b>Alessio · Comunidad Starter</p><p>Hoy revisamos en el grupo los primeros contenidos. Comparte el tuyo.</p></div>
+<div class="glass g4"><p class="t">Amplify Starter</p><p class="big">49 € · Acceso al momento</p></div>
+<span class="lbl">[Foto o vídeo de Alessio]</span>
+</div>
+<div class="facts"><div class="card fact y"><b>49 €</b><span>Oferta · antes <s>497 €</s></span></div><div class="card fact"><b>Acceso al momento</b><span>Empiezas hoy, a tu ritmo</span></div><div class="card fact"><b>21 días de comunidad</b><span>En WhatsApp, con Alessio y Sara</span></div></div>
+</div></section>
+<section><div class="wrap"><div class="dark">
+<div class="head"><span class="pill"><span class="d" aria-hidden="true"></span>Presentación</span><h2>Mira en 2 minutos qué consigues con el Starter</h2><p class="sub">Alessio te cuenta qué vas a hacer en el Starter y qué resultado tendrás al terminarlo.</p></div>
+<div class="ph b vid" role="img" aria-label="[Vídeo corto de Alessio · 2 min]"><span class="glass live gv"><i aria-hidden="true"></i>[Vídeo corto de Alessio · 2 min]</span><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+<div class="ctas"><a class="btn btn-main" href="#precio">Quiero empezar <span class="arr" aria-hidden="true">→</span></a></div>
+</div></div></section>
+<section><div class="wrap bento">
+<div class="card b-lead"><span class="pill" style="align-self:flex-start">Lo que cambia</span><h2>Pasa de publicar sin rumbo a <span class="hl">tener un plan</span> para tu marca personal.</h2><p>Defines de qué vas a hablar, preparas tus primeras publicaciones y entras en la comunidad del Starter durante 21 días para no hacerlo solo.</p></div>
+<article class="card b-item"><span class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></svg></span><div><h3>Sabes de qué hablar</h3><p>Defines tu tema y a quién te diriges, para que cada publicación sume a la misma idea.</p></div></article><article class="card b-item"><span class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M10 8.5v5l4.5-2.5z"/><path d="M8 21h8"/></svg></span><div><h3>Publicas tu primer contenido</h3><p>Sales del Starter con tus primeras piezas preparadas con la estructura que usamos en Amplify.</p></div></article><article class="card b-item"><span class="ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.6.8 2.7 2.5 3 5.2"/></svg></span><div><h3>No lo haces solo</h3><p>21 días en la comunidad del Starter, donde Alessio y Sara comparten avances y casos de alumnos.</p></div></article>
+</div></section>
+<section><div class="wrap fit">
+<div class="ph c" aria-hidden="true"><span class="pill">Marca personal</span><span class="pill">Tu tema</span><span class="pill">Primer contenido</span><span class="pill">Ganchos</span><span class="pill">Perfil</span><span class="pill">Constancia</span></div>
+<div class="card list">
+<span class="pill" style="align-self:flex-start">Para quién es</span>
+<h2>Amplify Starter es <span class="hl">para ti</span> si…</h2>
+<ol><li><span>Quieres empezar tu marca personal y no sabes por dónde.</span></li><li><span>Publicas de vez en cuando, pero sin un plan ni constancia.</span></li><li><span>Te interesa hacer UGC o trabajar con marcas más adelante.</span></li><li><span>Prefieres probar el método antes de entrar en un programa completo.</span></li><li><span>Puedes dedicarle un rato cada día durante las próximas semanas.</span></li></ol>
+<p class="not"><b>Ojo.</b> Si ya tienes un producto o negocio y quieres monetizar tu audiencia, mira Amplify Plus.</p>
+<div class="ctas"><a class="btn btn-main" href="#precio">Empezar por 49 € <span class="arr" aria-hidden="true">→</span></a></div>
+</div>
+</div></section>
+<section id="equipo"><div class="wrap">
+<div class="head"><span class="pill">Equipo</span><h2>Quién te <span class='hl'>acompaña</span></h2><p class="sub">El Starter lo ha preparado Alessio con el mismo método que usa en Amplify. Durante los 21 días de comunidad, Sara está para tus dudas.</p></div>
+<div class="team"><article class="card person"><div class="ph " aria-hidden="true"><span class="ini">A</span><span class="pill">Fundador</span></div><div class="txt"><h3>Alessio</h3><p>Crea el método de Amplify y dirige la llamada general cada semana.</p></div></article><article class="card person"><div class="ph b" aria-hidden="true"><span class="ini">E</span><span class="pill">Tu contacto</span></div><div class="txt"><h3>Equipo de Amplify</h3><p>Profesionales que te ayudan a resolver tus dudas.</p></div></article></div>
+</div></section>
+<section><div class="wrap"><div class="dark">
+<div class="head left"><span class="pill"><span class="d" aria-hidden="true"></span>Comunidad</span><h2>La comunidad del Starter</h2><p class="sub">Entras el mismo día que compras. Es un grupo de WhatsApp para avanzar acompañado.</p></div>
+<div class="comm">
+<div class="ph" role="img" aria-label="Ejemplo de la comunidad">
+<div class="glass chat c1"><p class="who"><b>AL</b>Alessio · Comunidad Starter</p><p>Hoy revisamos en el grupo los primeros contenidos. Comparte el tuyo.</p></div>
+<div class="glass live c2"><i aria-hidden="true"></i>Acceso inmediato</div>
+</div>
+<div class="grid"><div><h3>Avances y casos reales</h3><p>Alessio y Sara comparten lo que están consiguiendo otros alumnos.</p></div><div><h3>Primero te enteras tú</h3><p>Las aperturas de Amplify se anuncian aquí antes que en redes.</p></div><div><h3>21 días</h3><p>El mismo tiempo que dura el acompañamiento por email.</p></div><div><h3>Siguiente paso claro</h3><p>Si quieres seguir, pasas a la comunidad de Amplify.</p></div></div>
+</div>
+</div></div></section>
+<section><div class="wrap">
+<p class="logos-h">Marcas con las que trabajan alumnos de Amplify</p>
+<div class="logos"><span>[Marca]</span><span>[Marca]</span><span>[Marca]</span><span>[Marca]</span><span>[Marca]</span><span>[Marca]</span></div>
+</div></section>
+<section><div class="wrap about">
+<div class="card a-num"><span class="pill" style="align-self:flex-start;background:rgba(42,29,20,.08);border-color:transparent;color:inherit">Sobre Amplify</span><div><b>+120</b><p>alumnos han pasado por Amplify</p></div></div>
+<div class="card a-txt"><h2>Amplify, el método de <span class="hl">Alessio</span></h2><p><strong>Amplify es el programa de marca personal de Alessio</strong> (@alessioelcreador). Ayuda a creadores, universitarios y perfiles UGC a crecer en redes con un sistema, y a quien ya tiene negocio a convertir esa atención en ingresos.</p><p>El Starter es la puerta de entrada: la misma forma de trabajar, en pequeño, para que la pruebes antes de decidir nada más.</p><div class="row"><span class="pill">@alessioelcreador</span><span class="pill">Amplify · 997 €</span><span class="pill">Amplify Plus · 2.500 €</span></div></div>
+</div></section>
+<section><div class="wrap">
+<div class="head"><span class="pill">Cómo funciona</span><h2>Cómo funciona, paso a paso</h2></div>
+<ol class="steps"><li class="card"><h3>Compras el Starter</h3><p>Pago único de 49 € en Whop. Recibes los accesos al momento por email.</p></li><li class="card"><h3>Haces el Starter a tu ritmo</h3><p>Sigues las lecciones y preparas tu primer contenido con las plantillas.</p></li><li class="card"><h3>Avanzas en la comunidad</h3><p>Durante 21 días compartes avances y recibes ideas de Alessio y Sara.</p></li></ol>
+<div class="card close-note"><span class="pill y">Después</span><span>Al terminar tienes tu tema claro y tus primeras publicaciones listas. Si quieres seguir creciendo, el siguiente paso es Amplify.</span></div>
+</div></section>
+<section id="programa"><div class="wrap">
+<div class="head"><span class="pill">Programa</span><h2>Qué vas a hacer, lección a lección</h2></div>
+<div class="stats"><div class="card stat"><b>5</b><span>lecciones cortas</span></div><div class="card stat"><b>21 días</b><span>de comunidad</span></div><div class="card stat"><b>49 €</b><span>precio de oferta</span></div></div>
+<div class="mods"><details class="mod" open><summary><span class="n">Lección 1</span><h3>Tu tema y tu público</h3><span class="meta">3 temas</span><span class="pm" aria-hidden="true"></span></summary><div class="body"><p>Defines de qué vas a hablar para que cada publicación sume.</p><ul><li>Qué te diferencia</li><li>A quién le hablas</li><li>Tu idea central</li></ul></div></details><details class="mod"><summary><span class="n">Lección 2</span><h3>Tu perfil</h3><span class="meta">3 temas</span><span class="pm" aria-hidden="true"></span></summary><div class="body"><p>Preparas tu perfil para que quien llega entienda qué ofreces.</p><ul><li>Bio que explica qué haces</li><li>Foto y destacados</li><li>Enlace y llamada a la acción</li></ul></div></details><details class="mod"><summary><span class="n">Lección 3</span><h3>Ideas y ganchos</h3><span class="meta">3 temas</span><span class="pm" aria-hidden="true"></span></summary><div class="body"><p>Sales con una lista de ideas y ganchos listos para usar.</p><ul><li>De dónde sacar ideas</li><li>Tipos de gancho</li><li>Tu banco de ideas</li></ul></div></details><details class="mod"><summary><span class="n">Lección 4</span><h3>Tu primer contenido</h3><span class="meta">3 temas</span><span class="pm" aria-hidden="true"></span></summary><div class="body"><p>Creas y publicas tus primeras piezas con la estructura de Amplify.</p><ul><li>Estructura de una publicación</li><li>Grabar con el móvil</li><li>Tus 3 primeras piezas</li></ul></div></details><details class="mod"><summary><span class="n">Lección 5</span><h3>Tu siguiente paso</h3><span class="meta">3 temas</span><span class="pm" aria-hidden="true"></span></summary><div class="body"><p>Sabes qué hacer después del Starter para no parar.</p><ul><li>Cómo medir lo que publicas</li><li>Cómo seguir con constancia</li><li>Qué es Amplify</li></ul></div></details></div>
+</div></section>
+<section id="precio"><div class="wrap">
+<div class="head"><span class="pill">Precio</span><h2>Empieza hoy por <span class="hl">49 €.</span></h2><p class="sub">Un pago único, sin suscripciones. Al terminar decides si quieres seguir con Amplify.</p></div>
+<div class="price">
+<div class="card p-inc"><h3>Qué incluye</h3><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Acceso inmediato a todas las lecciones</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Plantillas para tu primer contenido</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>21 días en la comunidad del Starter</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Emails de acompañamiento durante 21 días</span></li></ul><div class="extra"><h3>Opcional en el pago: [plantillas o guion de contenidos]</h3><p>Puedes añadirlo al pagar por [17–27 €]. Es un extra, no hace falta para el Starter.</p></div></div>
+<div class="p-card"><div class="top-r"><span class="nm">Starter</span><span class="pill" style="background:#A8231D;border-color:transparent;color:#FFF8F2">Oferta · −90 %</span></div><p class="amount"><s class="was">497 €</s>49 €<small>Precio de oferta · antes 497 €. Pago único, sin suscripciones</small></p><div class="ctas"><a class="btn btn-main" href="#">Comprar el Starter <span class="arr" aria-hidden="true">→</span></a></div><p class="note">Pago seguro con Whop. Recibes los accesos por email al momento.</p></div>
+</div>
+</div></section>
+<section id="faq"><div class="wrap faqg">
+<div class="card side"><span class="pill" style="align-self:flex-start">Preguntas</span><h2>Lo que nos suelen <span class="hl">preguntar</span></h2><p class="muted">¿No encuentras tu duda? Sara te responde por WhatsApp.</p><div class="ctas"><a class="btn btn-ghost" href="#">Escribir por WhatsApp</a></div></div>
+<div class="faq"><details><summary>¿Cuándo tengo acceso?</summary><p>Al momento. Cuando completas el pago te llega un email con los accesos y el enlace a la comunidad.</p></details><details><summary>¿Necesito tener seguidores?</summary><p>No. El Starter está pensado para quien empieza o publica sin un plan.</p></details><details><summary>¿Cuánto tiempo necesito?</summary><p>Las lecciones son cortas y las haces a tu ritmo. Con un rato al día puedes terminarlo en pocos días.</p></details><details><summary>¿Qué pasa cuando acaba la comunidad?</summary><p>A los 21 días sales del grupo del Starter. Si quieres seguir con llamadas y comunidad, puedes entrar en Amplify.</p></details><details><summary>¿Tengo dudas antes de comprar?</summary><p>Escríbenos por WhatsApp y Sara te responde.</p></details></div>
+</div></section>
+<section><div class="wrap"><div class="card final">
+<a class="logo" href="#inicio" aria-label="Volver arriba">amplify</a>
+<h2>Tu marca personal empieza <span class="hl">hoy.</span></h2>
+<p>El punto de partida de Amplify para empezar tu marca personal con un sistema, no a ciegas.</p>
+<div class="ctas"><a class="btn btn-main" href="#precio">Empezar por 49 € <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#">¿Dudas? WhatsApp</a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap"><span>© Amplify · @alessioelcreador</span><span>Pagos seguros con Whop</span></div></footer>
+<div class="mbar"><div><b>49 € <s style="font-weight:400;opacity:.55;font-size:.8em">497 €</s></b><span>Oferta · pago único</span></div><a class="btn btn-main btn-sm" href="#precio">Empezar por 49 €</a></div>
+
+</body>
+</html>
